@@ -115,7 +115,7 @@ CLASS ZCL_SD_SALESORDER_DAEMON IMPLEMENTATION.
             IF sy-sysid <> zcl_system=>production.
              DATA(_OrderStatus) = _SalesOrders->updatesalesorderwithdaemon( order = <order> ).
              IF _OrderStatus = abap_true.
-              COMMIT WORK.
+              COMMIT WORK. "Here is importtant for commit use.
               DELETE ordertable WHERE vbeln = <order> AND guid = <order>-guid.
              ENDIF.
             ENDIF.
